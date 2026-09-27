@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Opening CashFlow OS…</title>
+<style>
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: center;
+    justify-content: center; font: 16px/1.5 system-ui, -apple-system, Segoe UI, sans-serif;
+    color: #1a1a1a; background: #fafafa;
+  }
+  main { text-align: center; padding: 24px; }
+  p { margin: 6px 0; }
+  .sub { color: #666; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <p id="msg">Opening CashFlow OS…</p>
+  <p class="sub" id="sub"></p>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  /* Where the app actually lives. If the repository is renamed or
+     moved, change this one line. */
+  var APP_PATH = '/CashFlow-OS/';
+
+  var msg = document.getElementById('msg');
+  var sub = document.getElementById('sub');
+
+  function go() {
+    var target = APP_PATH + window.location.search + window.location.hash;
+    window.location.replace(target);
+  }
+
+  function arrivedBare() {
+    if (msg) msg.textContent = 'CashFlow OS';
+    if (sub) {
+      sub.textContent = 'This address is not the app. Opening it now…';
+    }
+    go();
+  }
+
+  if (window.location.hash.indexOf('access_token') === -1 &&
+      window.location.hash.indexOf('error') === -1) {
+    arrivedBare();
+    return;
+  }
+
+  if (msg) msg.textContent = 'Taking you to CashFlow OS…';
+  if (sub) {
+    sub.textContent = 'Your password link is being opened.';
+  }
+
+  window.addEventListener('load', function () { go(); });
+  setTimeout(go, 60);
+})();
+</script>
+</body>
+</html>

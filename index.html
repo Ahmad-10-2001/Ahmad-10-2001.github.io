@@ -25,19 +25,14 @@
 <script>
 (function () {
   'use strict';
-
-  /* Where the app actually lives. If the repository is renamed or
-     moved, change this one line. */
   var APP_PATH = '/CashFlow-OS/';
 
   var msg = document.getElementById('msg');
   var sub = document.getElementById('sub');
-
   function go() {
     var target = APP_PATH + window.location.search + window.location.hash;
     window.location.replace(target);
   }
-
   function arrivedBare() {
     if (msg) msg.textContent = 'CashFlow OS';
     if (sub) {
@@ -51,14 +46,11 @@
     arrivedBare();
     return;
   }
-
   if (msg) msg.textContent = 'Taking you to CashFlow OS…';
   if (sub) {
-    sub.textContent = 'Your password link is being opened.';
+    sub.textContent = 'Your password reset link is being opened.';
   }
-
   window.addEventListener('load', function () { go(); });
-  setTimeout(go, 60);
 })();
 </script>
 </body>
